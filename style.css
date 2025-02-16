@@ -113,6 +113,30 @@ nav ul li a {
     padding: 10px;
 }
 
+.nav-link:focus, 
+.nav-link:active {
+    width: auto;  /* Sesuaikan ukuran lebar */
+    height: auto; /* Sesuaikan ukuran tinggi */
+    display: inline-flex; /* Supaya ukuran bisa diterapkan */
+    align-items: center;  /* Pusatkan teks */
+    justify-content: center; 
+    outline: 2px solid gray;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+    font-size: 14px;
+}
+
+.menu-toggle a:hover {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .menu-toggle i {
     font-size: 20px;
     transition: transform 0.3s ease;
@@ -132,6 +156,14 @@ nav ul li a {
     overflow: hidden;
 }
 
+.dropdownMenu {
+    display: none;
+}
+
+.dropdownMenu.active {
+    display: block;
+}
+
 .dropdown li a {
     color: black;
     padding: 10px;
@@ -141,6 +173,7 @@ nav ul li a {
 .dropdown li a:hover {
     background-color: #eee;
 }
+
 
 /* Tampilkan dropdown saat aktif */
 .dropdown.show {
