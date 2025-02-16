@@ -7,14 +7,29 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         dropdown.classList.toggle("show");
 
-        // Putar ikon menu saat diklik
+        // Putar ikon menu saat dropdown aktif
         if (dropdown.classList.contains("show")) {
             menuIcon.style.transform = "rotate(90deg)";
         } else {
             menuIcon.style.transform = "rotate(0deg)";
         }
     });
+
+    // Tutup dropdown jika klik di luar
+    document.addEventListener("click", function (event) {
+        if (!menuToggle.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.remove("show");
+            menuIcon.style.transform = "rotate(0deg)"; // Kembalikan ikon ke posisi awal
+        }
+    });
 });
+
+document.querySelector(".menu-toggle").addEventListener("click", function () {
+    let dropdown = document.querySelector(".dropdownMenu");
+    dropdown.classList.toggle("show"); // Toggle class 'show'
+});
+
+
 document.getElementById('searchInput').addEventListener('input', function() {
     const query = this.value.toLowerCase();
     const results = document.getElementById('searchResults');
