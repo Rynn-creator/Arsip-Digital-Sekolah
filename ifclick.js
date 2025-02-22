@@ -60,3 +60,49 @@ document.addEventListener('click', function(e) {
         document.getElementById('searchResults').style.display = 'none';
     }
 });
+
+const wrapper = document.querySelector(".carousel-wrapper");
+const cards = document.querySelectorAll(".review-card");
+const indicators = document.querySelectorAll(".indicator");
+const prevButton = document.querySelector(".prev");
+const nextButton = document.querySelector(".next");
+
+let currentIndex = 1; // Mulai dari tengah (review ke-2)
+
+function updateCarousel() {
+    cards.forEach((card, index) => {
+        if (index === currentIndex) {
+            card.style.filter = "none"; // Review yang aktif terlihat jelas
+            card.style.transform = "scale(1.1)"; // Efek zoom untuk yang aktif
+            card.style.opacity = "1"; 
+        } else {
+            card.style.filter = "blur(5px)"; // Review yang tidak aktif ngeblur
+            card.style.transform = "scale(0.9)"; 
+            card.style.opacity = "0.5"; 
+        }
+    });
+
+    indicators.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentIndex);
+    });
+}
+
+prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    updateCarousel();
+});
+
+nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updateCarousel();
+});
+
+indicators.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+        currentIndex = index;
+        updateCarousel();
+    });
+});
+
+// Set posisi awal
+updateCarousel();
