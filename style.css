@@ -6,16 +6,22 @@
 }
 
 body {
-    background-color: white;
+    background: linear-gradient(to left, #000428, #004e92);
+    height: 100vh;
+    margin: 0;
 }
 
+
 header {
+    margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #663399;
+    background-color: #6F6BEB;
     color: white;
+    padding: 10px 20px;
+    border-bottom: 3px solid gray; /* Stroke di bawah navbar */
 }
 
 .logo {
@@ -76,10 +82,15 @@ header {
     font-weight: bold;
 }
 
+.nav {
+    position: relative;
+    z-index: 10;
+}
+
 .search-results li {
     padding: 10px 15px;
     cursor: pointer;
-    transition: ease-in 0.3s;
+    transition: ease 0.3s;
     font-size: 14px;
     border-bottom: 1px solid #ddd;
 }
@@ -89,6 +100,7 @@ header {
 }
 
 .search-results li:hover {
+    border-radius: 10px;
     background: #eee;
 }
 
@@ -100,7 +112,7 @@ nav ul {
 }
 
 nav ul li {
-    position: relative;
+    position:relative ;
 }
 
 nav ul li a {
@@ -115,6 +127,8 @@ nav ul li a {
 
 .nav-link:focus, 
 .nav-link:active {
+    background: #ddd;
+    color: black;
     width: auto;  /* Sesuaikan ukuran lebar */
     height: auto; /* Sesuaikan ukuran tinggi */
     display: inline-flex; /* Supaya ukuran bisa diterapkan */
@@ -178,4 +192,177 @@ nav ul li a {
 /* Tampilkan dropdown saat aktif */
 .dropdown.show {
     display: block;
+}
+
+/* Review Section */
+#review-section {
+    position: relative;  /* Biar gak kena efek posisi navbar */
+    top: 100px;
+    margin-top: 100px;    /* Tambah jarak dari navbar */
+    padding: 20px;       /* Biar ada ruang */
+    z-index: 1;          /* Pastikan gak ketutupan */
+  }
+
+.review-title h2{
+   justify-content: center;
+   text-align: left;
+   width: 20px;
+   height: auto;
+   color: black;
+   font-family: "jua",serif;
+   font-size: 40px;
+   font-style: normal;
+}
+
+.review-title h2 .strong {
+    color: green;
+    margin-left: 10px;
+    font-family: "jua",serif;
+    font-style: normal;
+    font-size: 40px;
+}
+
+.review-title {
+    text-align: left;
+    padding-left: 50px;
+    background-color: white;
+    width: 400px;
+    height: auto;
+    margin: 0px 0px 0px 50px; /* Atas, kanan, bawah, kiri */
+    border: 2px solid black;
+    border-radius: 25px;
+    box-shadow: 
+        0px 4px 8px rgba(0, 0, 0, 0.2),  /* Shadow utama */
+        5px 5px 10px rgba(0, 0, 255, 0.5), /* Shadow biru */
+        -5px -5px 10px rgba(255, 0, 0, 0.5); /* Shadow merah */
+}
+
+.review-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Jarak antara arrow dan review-container */
+}
+
+/* Container untuk review */
+.review-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 700px;
+    margin: auto;
+}
+
+
+.carousel-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-card {
+    width: 300px;
+    height: 400px;
+    background: white;
+    margin-top: 40px; /* Sesuaikan angka ini */
+    border-radius: 15px;
+    border: 3px solid black;
+    outline: 1px solid black;
+    box-shadow: 
+        0px 4px 8px rgba(0, 0, 0, 0.2),  /* Shadow utama */
+        5px 5px 10px rgba(0, 0, 255, 0.5), /* Shadow biru */
+        -5px -5px 10px rgba(255, 0, 0, 0.5); /* Shadow merah */
+    padding: 15px;
+    text-align: center;
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.review-card:hover {
+    transform: scale(1.05); /* Efek membesar saat hover */
+}
+
+
+
+.foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.Nama {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0px 0px 0px; /* Atas, kanan, bawah, kiri */
+    color: black;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 0px 0px; /* Atas, kanan, bawah, kiri */
+    align-items: center;
+    font-size: 24px;
+    color: yellow;
+}
+
+.comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px 0px 82px; /* Atas, kanan, bawah, kiri */
+    color: black;
+    font-size: 20px;
+    background-color: gray;
+    width: 100px;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+
+button.prev, button.next {
+    background: white;
+    margin: 0px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;  /* Ukuran sama */
+    height: 40px;
+    border: 2px solid black; /* Pastikan border ada */
+    border-radius: 50%; /* Pastikan bentuk bulat */
+    font-size: 40px; /* Ukuran teks dikurangi */
+    line-height: 1;
+    cursor: pointer;
+    padding: 0; /* Hindari tambahan ruang */
+}
+
+
+.indicator-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.indicator {
+    width: 40px;
+    height: 40px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0px 50px 10px 50px; /* Atas, kanan, bawah, kiri */
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: black;
 }
