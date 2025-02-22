@@ -6,6 +6,9 @@
     <title>Arsip Digital</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -31,7 +34,7 @@
                         <li class="nav-item"><a href="#" class="nav-link">Service</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Koleksi</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Koleksi/Folder ku</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Unggah Arsip</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
                     </ul>
@@ -42,8 +45,53 @@
                 <li><a href="./Login.html"><i class="bx bx-log-in"></i> Login</a></li>
             </ul>
         </nav>
-    </header>
-
-    <script src="ifclick.js"></script>
+        </header>
+        <div class="review-container">
+            <div class="review-title">
+                <h2>Review<strong class="strong">Pengguna</strong></h2>
+            </div>
+            <div class="carousel">
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="carousel-wrapper">
+                    <div class="review-card active">
+                        <div class="foto">
+                            <img src="./Logo Arsip Digital.png" alt="" width="60px">
+                        </div>
+                        <p class="Nama"><strong>Nama 1</strong></p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="comment">Bagus banget!</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="foto">
+                            <img src="./Logo Arsip Digital.png" alt="" width="60px">
+                        </div>
+                        <p class="Nama"><strong>Nama 2</strong></p>
+                        <p class="rating">⭐⭐⭐⭐</p>
+                        <p class="comment">Lumayan!</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="foto">
+                            <img src="./Logo Arsip Digital.png" alt="" width="60px" >
+                        </div>
+                        <p class="Nama"><strong>Nama 3</strong></p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="comment">Luar biasa!</p>
+                    </div>
+                </div>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            <div class="indicator-container">
+                <span class="indicator active" onclick="setSlide(0)"></span>
+                <span class="indicator" onclick="setSlide(1)"></span>
+                <span class="indicator" onclick="setSlide(2)"></span>
+                </div>
+            </div>
+        
+             
+        </section>
+        
+        
+        
+        <script src="ifclick.js"></script>        
 </body>
 </html>
