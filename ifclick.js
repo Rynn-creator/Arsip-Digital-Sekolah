@@ -106,3 +106,24 @@ indicators.forEach((dot, index) => {
 
 // Set posisi awal
 updateCarousel();
+
+document.addEventListener("DOMContentLoaded", function () {
+    let questions = document.querySelectorAll(".question");
+
+    questions.forEach(function (question) {
+        question.addEventListener("click", function () {
+            let answer = this.nextElementSibling;
+            let icon = this.querySelector(".icon");
+
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+                answer.style.padding = "0 60px"; // Biar tetap rapi pas nutup
+                question.classList.remove("active");
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                answer.style.padding = "60px"; // Tambah padding pas dibuka
+                question.classList.add("active");
+            }
+        });
+    });
+});
