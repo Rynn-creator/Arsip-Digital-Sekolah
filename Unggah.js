@@ -62,38 +62,18 @@ document.addEventListener('click', function(e) {
 });
 
 
-// Konfigurasi Firebase (sesuaikan dengan proyekmu)
+// Inisialisasi Firebase tanpa import
 const firebaseConfig = {
-    apiKey: "AIzaSyCnbzhCKjdS1fsOQVCVzoFbFSnxZlB2Spg",
+    apiKey: "AIzaSyCnBckj5dIsfQOVCVOzFb5nxZlBZ5ps",
     authDomain: "arsip-digital-95087.firebaseapp.com",
     projectId: "arsip-digital-95087",
-    storageBucket: "arsip-digital-95087.firebasestorage.app",
-    messagingSenderId: "554203376915",
-    appId: "1:554203376915:web:61630254fd0a20a1323ee6",
-    measurementId: "G-C7TL3XPYQ4"
-  };
+    storageBucket: "arsip-digital-95087.appspot.com",
+    messagingSenderId: "554293373619",
+    appId: "1:554293373619:web:xxxxxx"
+};
 
 // Inisialisasi Firebase
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
+firebase.initializeApp(firebaseConfig);
 
-// Fungsi Upload File
-document.getElementById("uploadBtn").addEventListener("click", () => {
-    const fileInput = document.getElementById("fileInput").files[0];
-    if (!fileInput) {
-        alert("Pilih file terlebih dahulu!");
-        return;
-    }
-
-    const storageRef = ref(storage, `uploads/${fileInput.name}`); // Simpan di folder 'uploads/'
-    
-    uploadBytes(storageRef, fileInput)
-        .then((snapshot) => getDownloadURL(snapshot.ref))
-        .then((downloadURL) => {
-            alert("File berhasil diupload! Link: " + downloadURL);
-            console.log("Download URL:", downloadURL);
-        })
-        .catch((error) => {
-            console.error("Upload gagal:", error);
-        });
-});
+// Akses Firebase Storage
+const storage = firebase.storage();
