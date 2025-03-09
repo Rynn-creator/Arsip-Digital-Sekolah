@@ -62,21 +62,15 @@ document.addEventListener('click', function(e) {
 });
 
 
-// Inisialisasi Firebase tanpa import
-const firebaseConfig = {
+// Inisialisasi Firebase
+const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyCnBckj5dIsfQOVCVOzFb5nxZlBZ5ps",
     authDomain: "arsip-digital-95087.firebaseapp.com",
     projectId: "arsip-digital-95087",
     storageBucket: "arsip-digital-95087.appspot.com",
     messagingSenderId: "554293373619",
     appId: "1:554293373619:web:xxxxxx"
-};
-
-// Inisialisasi Firebase
-firebase.initializeApp(firebaseConfig);
+});
 
 // Akses Firebase Storage
-const storage = firebase.storage();
-
-
-
+const storage = firebaseApp.storage();
