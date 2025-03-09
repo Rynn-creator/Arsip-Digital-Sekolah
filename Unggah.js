@@ -62,5 +62,25 @@ document.addEventListener('click', function(e) {
 });
 
 
+const fileInput = document.querySelector('input[type="file"]');
+const uploadButton = document.querySelector('#upload-button'); 
+
+uploadButton.addEventListener('click', () => {
+    const file = fileInput.files[0];
+    if (!file) {
+        alert("Pilih file dulu!");
+        return;
+    }
+
+    const storageRef = firebase.storage().ref('uploads/' + file.name);
+    storageRef.put(file).then(snapshot => {
+        console.log('File berhasil diunggah!', snapshot);
+        alert('Upload sukses!');
+    }).catch(error => {
+        console.error('Upload gagal:', error);
+        alert('Upload gagal: ' + error.message);
+    });
+});
+
 // Menggunakan storage yang sudah ada
 console.log(storage);  // Cek apakah storage terdeteksi
