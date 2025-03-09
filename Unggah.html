@@ -51,8 +51,27 @@
     <button onclick="uploadFile()"></button>
     <button>Upload</button>    
     <p id="status"></p>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js"></script>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getStorage } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
+
+    // Konfigurasi Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyCnBckj5dIsfQOVCVOzFb5nxZlBZ5ps",
+        authDomain: "arsip-digital-95087.firebaseapp.com",
+        projectId: "arsip-digital-95087",
+        storageBucket: "arsip-digital-95087.appspot.com",
+        messagingSenderId: "554293373619",
+        appId: "1:554293373619:web:xxxxxx"
+    };
+
+    // Inisialisasi Firebase
+    const firebaseApp = initializeApp(firebaseConfig);
+    const storage = getStorage(firebaseApp);
+
+    console.log("Firebase berhasil dimuat!");
+</script>
+
     <script src="./unggah.js" defer></script>  <!-- Pastikan `defer` -->
 
 </body>
