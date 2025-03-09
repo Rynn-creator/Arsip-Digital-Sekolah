@@ -77,3 +77,6 @@ firebase.initializeApp(firebaseConfig);
 
 // Akses Firebase Storage
 const storage = firebase.storage();
+
+
+
