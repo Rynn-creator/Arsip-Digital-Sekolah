@@ -61,8 +61,6 @@ document.addEventListener('click', function(e) {
     }
 });
 
-import { initializeApp } from "firebase/app";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 // Konfigurasi Firebase (sesuaikan dengan proyekmu)
 const firebaseConfig = {
