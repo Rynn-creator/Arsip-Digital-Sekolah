@@ -62,15 +62,5 @@ document.addEventListener('click', function(e) {
 });
 
 
-// Inisialisasi Firebase
-const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyCnBckj5dIsfQOVCVOzFb5nxZlBZ5ps",
-    authDomain: "arsip-digital-95087.firebaseapp.com",
-    projectId: "arsip-digital-95087",
-    storageBucket: "arsip-digital-95087.appspot.com",
-    messagingSenderId: "554293373619",
-    appId: "1:554293373619:web:xxxxxx"
-});
-
-// Akses Firebase Storage
-const storage = firebaseApp.storage();
+// Menggunakan storage yang sudah ada
+console.log(storage);  // Cek apakah storage terdeteksi
