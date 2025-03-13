@@ -35,7 +35,7 @@
                         <li class="nav-item"><a href="#" class="nav-link">Service</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Koleksi/Folder ku</a></li>
+                        <li class="nav-item"><a href="./folderku.html" class="nav-link">Koleksi/Folder ku</a></li>
                         <li class="nav-item"><a href="./Unggah.html" class="nav-link">Unggah Arsip</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
                     </ul>
@@ -47,32 +47,15 @@
             </ul>
         </nav>
     </header>
-    <input type="file" id="fileInput" />
-    <button onclick="uploadFile()"></button>
-    <button>Upload</button>    
-    <p id="status"></p>
-    <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-    import { getStorage } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
 
-    // Konfigurasi Firebase
-    const firebaseConfig = {
-        apiKey: "AIzaSyCnBckj5dIsfQOVCVOzFb5nxZlBZ5ps",
-        authDomain: "arsip-digital-95087.firebaseapp.com",
-        projectId: "arsip-digital-95087",
-        storageBucket: "arsip-digital-95087.appspot.com",
-        messagingSenderId: "554293373619",
-        appId: "1:554293373619:web:xxxxxx"
-    };
+    <ul id="fileList"></ul>
 
-    // Inisialisasi Firebase
-    const firebaseApp = initializeApp(firebaseConfig);
-    const storage = getStorage(firebaseApp);
 
-    console.log("Firebase berhasil dimuat!");
-</script>
-
-    <script src="./unggah.js" defer></script>  <!-- Pastikan `defer` -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="./Supabase.js"></script>
+    <script  src="Unggah.js"></script>
 
 </body>
 </html>
