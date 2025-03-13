@@ -61,26 +61,44 @@ document.addEventListener('click', function(e) {
     }
 });
 
-
 const fileInput = document.querySelector('input[type="file"]');
-const uploadButton = document.querySelector('#upload-button'); 
 
-uploadButton.addEventListener('click', () => {
+async function uploadFile() {
     const file = fileInput.files[0];
     if (!file) {
-        alert("Pilih file dulu!");
+        alert("Pilih file terlebih dahulu!");
         return;
     }
 
-    const storageRef = firebase.storage().ref('uploads/' + file.name);
-    storageRef.put(file).then(snapshot => {
-        console.log('File berhasil diunggah!', snapshot);
-        alert('Upload sukses!');
-    }).catch(error => {
-        console.error('Upload gagal:', error);
-        alert('Upload gagal: ' + error.message);
-    });
-});
+    try {
+        // Pastikan supabase sudah ada
+        if (!window.supabase) {
+            alert("Supabase belum diinisialisasi!");
+            return;
+        }
 
-// Menggunakan storage yang sudah ada
-console.log(storage);  // Cek apakah storage terdeteksi
+        // Pastikan storage ada
+        if (!window.supabase.storage) {
+            alert("Supabase storage tidak ditemukan!");
+            return;
+        }
+
+        // Pastikan bucket sudah benar
+        const { data, error } = await window.supabase.storage
+            .from("Arsip-Digital")  // Ganti dengan nama bucket di Supabase
+            .upload(`Upload/${file.name}`, file, { upsert: true });
+
+        if (error) throw error;
+
+        console.log("Upload berhasil!", data);
+        alert("Upload berhasil! File tersimpan.");
+    } catch (error) {
+        console.error("Upload gagal:", error.message);
+        alert("Upload gagal! " + error.message);
+    }
+}
+
+console.log("Supabase Object:", window.supabase);
+console.log("Supabase Storage:", window.supabase?.storage);
+
+document.querySelector("button").addEventListener("click", uploadFile);
