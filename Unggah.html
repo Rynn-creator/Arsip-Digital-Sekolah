@@ -19,9 +19,8 @@
         </div>
         <div class="search-box">
             <i class='bx bx-search'></i>
-            <input type="text" placeholder="Cari Arsip" id="searchInput">
-            <button onclick="searchFunction()">Cari</button>
-            <ul class="search-results" id="searchResults"></ul>
+            <input type="text" id="searchInput" placeholder="Cari file...">
+            <div id="results"></div>
             
         </div>
         <nav>
@@ -48,9 +47,7 @@
         </nav>
     </header>
     <input type="file" id="fileInput">
-    <button onclick="uploadFile()">Upload</button>
-
-    <ul id="fileList"></ul>
+    <button onclick="uploadFile()" class="button-upload">Upload</button>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
