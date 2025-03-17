@@ -148,7 +148,7 @@ async function fetchFiles() {
         } else if (["doc", "docx"].includes(ext)) {
             thumbnailSrc = "wordicon.png"; // Ikon Word
         } else if (["xlsm", "xlsx", "Xlsm"].includes(ext)) {
-            thumbnailSrc = "excel-icon.png"; // Ikon Excel
+            thumbnailSrc = "excelicon.png"; // Ikon Excel
         } else if (["mp4", "mkv", "avi"].includes(ext)) {
             thumbnailSrc = "videoicon.png"; // Ikon Video
         } else {
