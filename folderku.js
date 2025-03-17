@@ -144,15 +144,15 @@ async function fetchFiles() {
             // Jika file adalah gambar, gunakan sebagai thumbnail
             thumbnailSrc = fileUrl;
         } else if (ext === "pdf") {
-            thumbnailSrc = "./icon/pdf-icon.png"; // Ikon PDF
+            thumbnailSrc = "pdficon.png"; // Ikon PDF
         } else if (["doc", "docx"].includes(ext)) {
-            thumbnailSrc = "./icon/word-icon.png"; // Ikon Word
+            thumbnailSrc = "wordicon.png"; // Ikon Word
         } else if (["xlsm", "xlsx", "Xlsm"].includes(ext)) {
-            thumbnailSrc = "./icon/excel-icon.png"; // Ikon Excel
+            thumbnailSrc = "excel-icon.png"; // Ikon Excel
         } else if (["mp4", "mkv", "avi"].includes(ext)) {
-            thumbnailSrc = "./icon/video-icon.png"; // Ikon Video
+            thumbnailSrc = "videoicon.png"; // Ikon Video
         } else {
-            thumbnailSrc = "./icon/file-icon.png"; // Ikon default untuk file lain
+            thumbnailSrc = "fileicon.png"; // Ikon default untuk file lain
         }
 
         // Elemen gambar atau ikon
