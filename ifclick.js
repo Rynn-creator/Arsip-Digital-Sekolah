@@ -29,36 +29,92 @@ document.querySelector(".menu-toggle").addEventListener("click", function () {
     dropdown.classList.toggle("show"); // Toggle class 'show'
 });
 
+const { createClient } = supabase;
 
-document.getElementById('searchInput').addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    const results = document.getElementById('searchResults');
+const supabaseUrl = "https://byseuxjiqggbctokhrec.supabase.co"; // Ganti dengan URL Supabase kamu
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ5c2V1eGppcWdnYmN0b2tocmVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE0OTcxMzYsImV4cCI6MjA1NzA3MzEzNn0.VyaQMbjhWTJosC-D2ODBcHsXplsKTHFw1nZjBLPWTM8"; // Ganti dengan API Key kamu
 
-    const items = ["Dokumen Sekolah", "Laporan Keuangan", "Rapat Guru", "Absensi Siswa"];
-    results.innerHTML = '';
+window.supabase = createClient(supabaseUrl, supabaseKey);
 
-    if (query) {
-        const filteredItems = items.filter(item => item.toLowerCase().includes(query));
-        if (filteredItems.length > 0) {
-            results.style.display = 'block'; // Tampilkan hasil pencarian
-            filteredItems.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                results.appendChild(li);
-            });
-        } else {
-            results.style.display = 'none'; // Sembunyikan jika tidak ada hasil
+console.log("Supabase Initialized:", window.supabase);
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const searchInput = document.getElementById("searchInput");
+    const resultsContainer = document.getElementById("results");
+
+    // Fungsi untuk mendapatkan file dari Supabase
+    async function getUploadedFiles() {
+        const { data, error } = await supabase.storage.from('Arsip-Digital').list('Upload/');
+        if (error) {
+            console.error('Error fetching files:', error);
+            return [];
         }
-    } else {
-        results.style.display = 'none'; // Sembunyikan jika input kosong
+        return data.map(file => ({
+            name: file.name,
+            url: `${"https://byseuxjiqggbctokhrec.supabase.co"}/storage/v1/object/public/${"Arsip-Digital"}/Upload/${file.name}`
+        }));
     }
-});
 
-// Sembunyikan dropdown jika klik di luar
-document.addEventListener('click', function(e) {
-    if (!document.querySelector('.search-box').contains(e.target)) {
-        document.getElementById('searchResults').style.display = 'none';
+    // Ambil daftar file dari Supabase saat halaman dimuat
+    const uploadedFiles = await getUploadedFiles();
+
+    // Fungsi untuk mencari file
+    function searchFiles(query) {
+        return uploadedFiles.filter(file => 
+            file.name.toLowerCase().includes(query.toLowerCase())
+        );
     }
+
+    // Menampilkan hasil pencarian di bawah input
+    function displayResults(results) {
+        resultsContainer.innerHTML = ""; // Kosongkan hasil sebelumnya
+        if (results.length === 0) {
+            resultsContainer.innerHTML = "<p>Tidak ada hasil ditemukan</p>";
+            return;
+        }
+
+        results.forEach(file => {
+            const item = document.createElement("div");
+            item.classList.add("result-item");
+
+            // Buat elemen gambar preview
+            const img = document.createElement("img");
+            img.src = file.url;
+            img.alt = file.name;
+            img.classList.add("result-img");
+
+            const Pdf = document.createElement("Pdf");
+            Pdf.src = file.url;
+            Pdf.alt = file.name;
+            Pdf.classList.add("result-Pdf");
+
+            // Buat elemen teks nama file
+            const text = document.createElement("p");
+            text.textContent = file.name;
+
+            item.appendChild(img);
+            item.appendChild(Pdf);
+            item.appendChild(text);
+
+            // Klik file akan membukanya
+            item.addEventListener("click", () => {
+                window.open(file.url, "_blank");
+            });
+
+            resultsContainer.appendChild(item);
+        });
+    }
+
+    // Event listener untuk pencarian
+    searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.trim();
+        if (query.length > 0) {
+            const results = searchFiles(query);
+            displayResults(results);
+        } else {
+            resultsContainer.innerHTML = ""; // Kosongkan hasil jika input kosong
+        }
+    });
 });
 
 const wrapper = document.querySelector(".carousel-wrapper");
