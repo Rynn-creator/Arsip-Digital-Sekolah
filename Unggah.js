@@ -90,7 +90,9 @@ async function uploadFile() {
             alert("Supabase storage tidak ditemukan!");
             return;
         }
-
+    console.log("Isi file:", file);
+    console.log("Nama file:", file ? file.name : "Tidak ada file!");
+    
         // Pastikan bucket sudah benar
         const { data, error } = await window.supabase.storage
             .from("Arsip-Digital")  // Ganti dengan nama bucket di Supabase
@@ -100,10 +102,14 @@ async function uploadFile() {
 
         console.log("Upload berhasil!", data);
         alert("Upload berhasil! File tersimpan.");
+        window.location.href = "./folderku.html"; // Ganti dengan URL halaman "Folderku"
     } catch (error) {
         console.error("Upload gagal:", error.message);
         alert("Upload gagal! " + error.message);
     }
+    
+
+        console.log("URL File:", fileUrl);
 }
 
 console.log("Supabase Object:", window.supabase);
