@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip Digital</title>
+    <link rel="stylesheet" href="./folderku.css">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Jua&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo Arsip Digital.png" alt="Logo">
+            <h1>Arsip Digital</h1>
+        </div>
+        <div class="search-box">
+            <i class='bx bx-search'></i>
+            <input type="text" id="searchInput" placeholder="Cari file...">
+            <div id="results"></div>
+        </div>
+        <nav>
+            <ul>
+                <li class="menu-toggle nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="bx bx-menu"></i>
+                        <span>Menu</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li class="nav-item"><a href="#" class="nav-link">Service</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
+                        <li class="nav-item"><a href="./folderku.html" class="nav-link">Koleksi/Folder ku</a></li>
+                        <li class="nav-item"><a href="./Unggah.html" class="nav-link">Unggah Arsip</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="homepage.html"><i class="bx bx-home"></i> Home</a></li>
+                <li><a href="#"><i class="bx bx-user"></i> About</a></li>
+                <li><a href="./Login.html"><i class="bx bx-log-in"></i> Login</a></li>
+            </ul>
+        </nav>
+        </header>
+        <div class="box-Daftar-Arsip">
+            <h1 class="tittle-text">Daftar Arsip</h1>
+        </div>
+        <div id="file-list"></div>
+        <div id="contact">
+            <div class="wrapper">
+                <div class="footer">
+                    <div class="footer-section">
+                        <h3>Creative Photographer.</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, numquam?</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>About</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, numquam?</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact</h3>
+                        <p>Jl. Moh. Kahfi 1</p>
+                        <p>Kode Pos: 12362</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Social</h3>
+                        <p><b>Instragram: </b>fahridwiprast.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="copyright">
+                <div class="wrapper">&copy; 2024. <b>CreativePhotographer.</b> All Rights Reserverd.
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script src="./Supabase.js"></script>
+
+        <script src="./folderku.js"></script>
+        
+</body>
+</html>
