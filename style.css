@@ -87,23 +87,41 @@ header {
     z-index: 10;
 }
 
-.search-results li {
-    padding: 10px 15px;
+#results {
+    position: absolute;
+    top: 100%; /* Supaya muncul tepat di bawah search box */
+    left: 0;
+    width: 100%; /* Sesuai dengan input */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    overflow: hidden;
+    z-index: 1000;
+    color: black;
+    font-weight: bold;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
     cursor: pointer;
-    transition: ease 0.3s;
-    font-size: 14px;
     border-bottom: 1px solid #ddd;
 }
 
-.search-results li:last-child {
-    border-bottom: none;
+.result-item:hover {
+    background-color: #f0f0f0;
 }
 
-.search-results li:hover {
-    border-radius: 10px;
-    background: #eee;
+.result-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    object-fit: cover;
 }
-
 nav ul {
     list-style: none;
     display: flex;
