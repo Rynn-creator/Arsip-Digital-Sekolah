@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./Logo Arsip Digital.png">
     <title>Arsip Digital</title>
     <link rel="stylesheet" href="./Unggah.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +20,8 @@
         </div>
         <div class="search-box">
             <i class='bx bx-search'></i>
-            <input type="text" id="searchInput" placeholder="Cari file...">
+            <input type="text" placeholder="Cari Arsip" id="searchInput">
             <div id="results"></div>
-            
         </div>
         <nav>
             <ul>
@@ -46,12 +46,46 @@
             </ul>
         </nav>
     </header>
-    <input type="file" id="fileInput">
-    <button onclick="uploadFile()" class="button-upload">Upload</button>
+    <div class="upload-wrapper">
+        <div class="UploadandInput">
+          <div class="upload-icon"><i class='bx bx-cloud-upload'></i></div>
+          <h2 class="texttittle">Unggah Arsip Sekolah</h2>
+          <p class="subtittle">Silakan pilih file yang ingin Anda unggah.</p>
+          <input type="file" id="fileInput"><br>
+          <button onclick="uploadFile()" class="button-upload">Upload</button>
+        </div>
+      </div>
+    </div>
+    <div id="contact">
+        <div class="wrapper">
+            <div class="footer">
+                <div class="footer-section">
+                    <h3>Creative Photographer.</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, numquam?</p>
+                </div>
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, numquam?</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Jl. Moh. Kahfi 1</p>
+                    <p>Kode Pos: 12362</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <p><b>Instragram: </b>fahridwiprast.</p>
+                </div>
+            </div>
+        </div>
+        <div id="copyright">
+            <div class="wrapper">&copy; 2024. <b>CreativePhotographer.</b> All Rights Reserverd.
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script  src="Unggah.js"></script>
-
 </body>
 </html>
