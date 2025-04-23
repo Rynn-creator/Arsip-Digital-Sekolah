@@ -1,23 +1,53 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - Arsip Digital</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Register Arsip Digital</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #002F6C, #001737);
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #0f2c53;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #00d1d1;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login Arsip Digital</h2>
-    <input type="email" id="email" placeholder="Email" required />
-    <input type="password" id="password" placeholder="Password" required />
-    <button onclick="login()">Login</button>
-    <p id="message"></p>
-  </div>
 
-  
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <div class="card">
+    <h2>Daftar Akun Arsip</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="register()">Register</button>
+  </div>
 
   <script src="./Login.js"></script>
 </body>
