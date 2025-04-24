@@ -30,17 +30,14 @@ body {
     animation: fadeInUp 0.8s ease-out both;
   }
 
-
 header {
-    margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
     background-color: #6F6BEB;
     color: white;
     padding: 10px 20px;
-    border-bottom: 3px solid gray; /* Stroke di bawah navbar */
+    border-bottom: 3px solid black; /* Stroke di bawah navbar */
 }
 
 .logo {
@@ -74,8 +71,10 @@ header {
     background: transparent;
     outline: none;
     padding: 8px 14px;
-    width: 300px;
+    width: 500px;
 }
+
+
 
 .search-box i {
     font-size: 20px;
@@ -90,6 +89,7 @@ header {
     left: 0;
     width: 100%; /* Sesuai dengan input */
     background: white;
+    border: 0.6px solid black;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     list-style: none;
@@ -141,6 +141,7 @@ header {
     margin-right: 10px;
     object-fit: cover;
 }
+
 nav ul {
     list-style: none;
     display: flex;
@@ -205,6 +206,7 @@ nav ul li a {
     text-align: left;
     border-radius: 5px;
     overflow: hidden;
+    z-index: 1000; /* pastikan ini tinggi */
 }
 
 .dropdownMenu {
@@ -401,11 +403,11 @@ nav ul li a {
 
 button.prev, button.next {
     background: white;
-    margin: 0px 30px;
+    margin: 0px 50px 0 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;  /* Ukuran sama */
+    width: 40px;  /* Ukuran sama */
     height: 40px;
     border: 2px solid black; /* Pastikan border ada */
     border-radius: 50%; /* Pastikan bentuk bulat */
@@ -438,6 +440,7 @@ button.prev, button.next {
 .faq {
     width: 100%;
     margin: auto;
+    padding-bottom: 50px;
 }
 
 .Information h2 {
