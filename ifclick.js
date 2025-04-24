@@ -24,6 +24,89 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Fungsi untuk ngetik teks sekali
+  function typeTextOnce(id, text, delay = 50, callback) {
+    let el = document.getElementById(id);
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, delay);
+      } else if (callback) {
+        callback();
+      }
+    }
+    type();
+  }
+
+  // Fungsi animasi ketik & hapus loop
+  
+  // Fungsi ngetik & hapus teks dari array
+  function typeMultiple(id, texts, typingDelay = 60, erasingDelay = 40, pause = 1500) {
+    const el = document.getElementById(id);
+    let textIndex = 0;
+    let charIndex = 0;
+    let typing = true;
+
+    function animate() {
+      const currentText = texts[textIndex];
+      
+      if (typing) {
+        if (charIndex < currentText.length) {
+          el.textContent += currentText.charAt(charIndex);
+          charIndex++;
+          setTimeout(animate, typingDelay);
+        } else {
+          typing = false;
+          setTimeout(animate, pause);
+        }
+      } else {
+        if (charIndex > 0) {
+          el.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(animate, erasingDelay);
+        } else {
+          typing = true;
+          textIndex = (textIndex + 1) % texts.length;
+          setTimeout(animate, 500);
+        }
+      }
+    }
+
+    animate();
+  }
+
+  // Fungsi ketik judul sekali, lalu animasi subjudul loop
+  window.onload = () => {
+    const subjudulList = [
+      "Jelajahi ribuan dokumen dan koleksi digital yang tersimpan dengan rapi.",
+      "Temukan arsip penting dari berbagai kategori.",
+      "Bagikan dan simpan dokumen digital dengan mudah."
+    ];
+
+    // Ketik judul utama sekali
+    typeTextOnce("hero-title", "Selamat Datang di Arsip Digital", 60, () => {
+      typeMultiple("hero-subtitle", subjudulList);
+    });
+  };
+
+  // Fungsi ketik judul sekali
+  function typeTextOnce(id, text, delay = 50, callback) {
+    let el = document.getElementById(id);
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, delay);
+      } else if (callback) {
+        callback();
+      }
+    }
+    type();
+  }
+
 document.querySelector(".menu-toggle").addEventListener("click", function () {
     let dropdown = document.querySelector(".dropdownMenu");
     dropdown.classList.toggle("show"); // Toggle class 'show'
