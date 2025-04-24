@@ -231,6 +231,37 @@ nav ul li a {
     display: block;
 }
 
+.hero {
+    background: linear-gradient(to right, #e3f2fd, #ffffff);
+    text-align: center;
+    padding: 40px 40px;
+  }
+
+  #hero-subtitle::after {
+    content: "|";
+    animation: blink 1s infinite;
+    color: black; 
+  }
+  
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  
+
+.All {
+    padding-top: 100px;
+}
+
 /* Review Section */
 #review-section {
     position: relative;  /* Biar gak kena efek posisi navbar */
