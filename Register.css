@@ -1,0 +1,123 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body background bergerak */
+body {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #1b1b2f, #162447, #1f4068, #1b1b2f);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animasi background bergerak */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Efek bintang */
+.stars {
+  width: 2px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  animation: moveStars 50s linear infinite;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+@keyframes moveStars {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Card Login/Register */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 1.5s ease forwards;
+  opacity: 0;
+}
+
+/* Animasi fadeIn */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form style */
+.container h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #00B4D8;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.container button:hover {
+  background-color: #0096C7;
+}
+
+.container p {
+  margin-top: 15px;
+  color: #eeeeee;
+  font-size: 14px;
+}
+
+.container a {
+  color: #90e0ef;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
