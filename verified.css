@@ -1,0 +1,62 @@
+/* verified.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72, #2a5298);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.container {
+    text-align: center;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 50px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    animation: fadeIn 1.5s ease;
+}
+
+.card h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #2a5298;
+}
+
+.card p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.button {
+    text-decoration: none;
+    background-color: #2a5298;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background-color: #1e3c72;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
