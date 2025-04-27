@@ -16,6 +16,6 @@ async function register() {
     alert('Gagal daftar: ' + error.message);
   } else {
     alert('Berhasil daftar! Silakan login.');
-    window.location.href = "Login.html"; // Redirect ke halaman login
+    window.location.href = "./Login.html"; // Redirect ke halaman login
   }
 }
