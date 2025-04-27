@@ -8,19 +8,24 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> <!-- Supabase CDN -->
 </head>
 <body>
+  <!-- Bintang-bintang -->
+  <div class="stars" style="top:10%; left:20%;"></div>
+  <div class="stars" style="top:30%; left:50%;"></div>
+  <div class="stars" style="top:70%; left:80%;"></div>
 
+  <!-- Form Login atau Register -->
   <div class="container">
-    <h2>Daftar Akun Arsip Digital</h2>
-    
+    <h2>Login Arsip Digital</h2>
     <input type="email" id="email" placeholder="Email">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="register()">Daftar</button>
+    <button onclick="login()">Login</button>
 
-    <p>Sudah punya akun? <a href="Login.html">Login di sini</a></p>
+    <p>Belum punya akun? <a href="Register.html">Daftar</a></p>
   </div>
 
-  <script src="Register.js"></script>
-
+  <!-- Tambahkan script login.js disini -->
+  <script src="./Register.js"></script>
 </body>
+
 
 </html>
