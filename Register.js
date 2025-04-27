@@ -13,9 +13,9 @@ async function register() {
   });
 
   if (error) {
-    alert('Gagal daftar: ' + error.message);
-  } else {
-    alert('Berhasil daftar! Silakan login.');
-    window.location.href = "./Login.html"; // Redirect ke halaman login
-  }
+        alert('Gagal daftar: ' + error.message);
+    } else {
+        alert('Berhasil daftar! Cek email untuk konfirmasi akun (OTP/link dikirim).');
+        window.location.href = "./Login.html"; // Redirect ke halaman login
+    }
 }
