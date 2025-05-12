@@ -111,7 +111,7 @@ searchInput.addEventListener("input", (e) => {
 });
 
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 async function askAI() {
     const question = document.getElementById("userQuestion").value;
