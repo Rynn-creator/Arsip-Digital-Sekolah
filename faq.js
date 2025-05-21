@@ -17,12 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Tutup dropdown jika klik di luar
-document.addEventListener("click", function (event) {
-    if (!menuToggle.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.classList.remove("show");
-        menuIcon.style.transform = "rotate(0deg)"; // Kembalikan ikon ke posisi awal
-    }
-});
+    document.addEventListener("click", function (event) {
+        if (!menuToggle.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.remove("show");
+            menuIcon.style.transform = "rotate(0deg)"; // Kembalikan ikon ke posisi awal
+        }
+    });
+
 
 
 document.querySelector(".menu-toggle").addEventListener("click", function () {
@@ -105,41 +106,91 @@ searchInput.addEventListener("input", (e) => {
         const results = searchFiles(query);
         displayResults(results);
     } else {
-        resultsContainer.innerHTML = ""; // Kosongkan hasil jika input kosong
+        resultsContainer.innerHTML = ""; 
     }
 });
 });
 
 
-const API_KEY = "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";
+const API_KEY = "cmLHa3mMPKPJReANzKQ0wrapAH5lULG7BxeCqxX0"; 
+const chatBox = document.getElementById("chat-box");
+const input = document.getElementById("user-input");
+const clearBtn = document.getElementById("clear-history");
+const toggleModeBtn = document.getElementById("toggle-mode");
 
-async function askAI() {
-    const question = document.getElementById("userQuestion").value;
-    const aiAnswerDiv = document.getElementById("aiAnswer");
+// Load history
+let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+history.forEach(({ role, content }) => addMessage(role, content));
 
-    if (!question) {
-        aiAnswerDiv.innerText = "Silakan masukkan pertanyaan.";
-        return;
-    }
+function addMessage(role, content, typing = false) {
+  const div = document.createElement("div");
+  div.className = `bubble ${role}`;
+  div.innerText = typing ? "" : content;
 
-    aiAnswerDiv.innerText = "Sedang menjawab...";
+  chatBox.appendChild(div);
+  chatBox.scrollTop = chatBox.scrollHeight;
 
-    try {
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${API_KEY}`
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: question }]
-            })
-        });
-
-        const data = await response.json();
-        aiAnswerDiv.innerText = data.choices[0].message.content.trim();
-    } catch (error) {
-        aiAnswerDiv.innerText = "Gagal menjawab: " + error.message;
-    }
+  if (typing) {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < content.length) {
+        div.innerText += content.charAt(i);
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 25);
+  }
 }
+
+async function sendMessage() {
+  const question = input.value.trim();
+  if (!question) return;
+
+  addMessage("user", question);
+  input.value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  addMessage("ai", "Mengetik...", false);
+
+  try {
+    const response = await fetch("https://api.cohere.ai/v1/chat", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${API_KEY}`,
+        "Content-Type": "application/json",
+        "Cohere-Version": "2022-12-06"
+      },
+      body: JSON.stringify({
+        model: "command-r",
+        message: question
+      })
+    });
+
+    const result = await response.json();
+    const answer = result.text.trim();
+
+    // Ganti "Mengetik..." dengan jawaban
+    const lastAiBubble = chatBox.querySelector(".bubble.ai:last-child");
+    if (lastAiBubble) chatBox.removeChild(lastAiBubble);
+    addMessage("ai", answer, true);
+
+    // Simpan ke localStorage
+    history.push({ role: "user", content: question });
+    history.push({ role: "ai", content: answer });
+    localStorage.setItem("chatHistory", JSON.stringify(history));
+  } catch (err) {
+    console.error("Gagal menjawab:", err);
+  }
+}
+
+// Tombol hapus history
+clearBtn.addEventListener("click", () => {
+  localStorage.removeItem("chatHistory");
+  chatBox.innerHTML = "";
+});
+
+// Dark mode toggle
+toggleModeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
